@@ -1,7 +1,14 @@
+import FriendList from './components/FriendList';
+import { Friends } from './components/FriendsData';
+
 function App() {
     return (
         <>
-            <h1>Hello Split Bill</h1>
+            <div className='app'>
+                <div className='sidebar'>
+                    <FriendList friends={Friends} />
+                </div>
+            </div>
         </>
     );
 }
