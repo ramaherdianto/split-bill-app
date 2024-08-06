@@ -1,16 +1,12 @@
-import FriendList from './components/FriendList';
-import { Friends } from './components/FriendsData';
+import React from 'react';
+import SplitBill from './components/SplitBill';
 
-function App() {
+const App = () => {
     return (
         <>
-            <div className='app'>
-                <div className='sidebar'>
-                    <FriendList friends={Friends} />
-                </div>
-            </div>
+            <SplitBill />
         </>
     );
-}
+};
 
 export default App;
