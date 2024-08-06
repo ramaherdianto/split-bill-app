@@ -2,10 +2,9 @@ import { useState } from 'react';
 import FormAddFriend from './form/FormAddFriend';
 import FormSplitBill from './form/FormSplitBill';
 import FriendList from './FriendList';
-import { Friends } from './FriendsData';
 
 function SplitBill() {
-    const [friends, setFriends] = useState(Friends);
+    const [friends, setFriends] = useState([]);
     const [showFormFriend, setShowFormFriend] = useState(false);
     const [selectedFriend, setSelectedFriend] = useState(null);
 
@@ -23,6 +22,22 @@ function SplitBill() {
         setShowFormFriend(false);
     };
 
+    const handleSplitBill = (value) => {
+        setFriends(
+            friends.map((friend) => {
+                if (friend.id === selectedFriend?.id) {
+                    return {
+                        ...friend,
+                        balance: friend.balance + value,
+                    };
+                }
+
+                return friend;
+            })
+        );
+        setSelectedFriend(null);
+    };
+
     return (
         <>
             <div className='app'>
@@ -37,7 +52,9 @@ function SplitBill() {
                         {!showFormFriend ? 'Tambah Teman' : 'Tutup'}
                     </button>
                 </div>
-                {selectedFriend && <FormSplitBill selectedFriend={selectedFriend} />}
+                {selectedFriend && (
+                    <FormSplitBill selectedFriend={selectedFriend} onSplitBill={handleSplitBill} />
+                )}
             </div>
         </>
     );
