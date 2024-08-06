@@ -6,7 +6,7 @@ const Friend = ({ friend, onSelectedFriend, selectedFriend }) => {
     return (
         <>
             <li className={isSelected ? 'selected' : ''}>
-                <img src={friend.image} alt={`Profile ${friend.name}`} />
+                <img src={friend.image} alt={friend.name} />
                 <h3>{friend.name}</h3>
                 {friend.balance < 0 && (
                     <p className='red'>
@@ -15,7 +15,7 @@ const Friend = ({ friend, onSelectedFriend, selectedFriend }) => {
                 )}
                 {friend.balance > 0 && (
                     <p className='green'>
-                        Kamu berhutang Rp{Math.abs(friend.balance)} ke {friend.name}
+                        {friend.name} berhutang Rp{Math.abs(friend.balance)} ke kamu
                     </p>
                 )}
                 {friend.balance === 0 && <p>Kamu dan {friend.name} tidak ada hutang</p>}
